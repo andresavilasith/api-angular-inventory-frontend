@@ -26,7 +26,10 @@
               "src/assets/css/styles.css"
             ],
             "scripts": [
+              "src/assets/js/all.js",
+              "src/assets/js/bootstrap.bundle.min.js",
               "src/assets/js/main.js"
+
             ]
           },
           "configurations": {
