@@ -1,0 +1,248 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html">Inventory</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+    <div class="d-none d-md-inline-block ms-auto me-0 me-md-3 my-2 my-md-0">
+    </div>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 ">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Configuración</a></li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#!">Salir</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                        aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
+                        Panel
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+                                aria-controls="pagesCollapseAuth">
+                                Usuarios
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="login.html">Lista de usuarios</a>
+                                    <a class="nav-link" href="register.html">Crear Usuarios</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#roleCollapse" aria-expanded="false" aria-controls="roleCollapse">
+                                Roles
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="roleCollapse" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Lista de roles</a>
+                                    <a class="nav-link" href="404.html">Crear rol</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#categoryCollapse" aria-expanded="false"
+                                aria-controls="categoryCollapse">
+                                Categorías
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="categoryCollapse" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Lista de categorías</a>
+                                    <a class="nav-link" href="404.html">Crear categoría</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#permCollapse" aria-expanded="false" aria-controls="permCollapse">
+                                Permisos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="permCollapse" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Lista de permisos</a>
+                                    <a class="nav-link" href="404.html">Crear permiso</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#collapseGeneral" aria-expanded="false" aria-controls="collapseGeneral">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Ajustes Generales
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseGeneral" aria-labelledby="headingTwo"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPag">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#pagesCollapseDocs" aria-expanded="false"
+                                aria-controls="pagesCollapseDocs">
+                                Documentos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseDocs" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPag">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="login.html">Lista de documentos</a>
+                                    <a class="nav-link" href="register.html">Crear documento</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#taxCollapse" aria-expanded="false" aria-controls="taxCollapse">
+                                Impuestos
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="taxCollapse" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPag">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Lista de impuestos</a>
+                                    <a class="nav-link" href="404.html">Crear impuesto</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#transCollapse" aria-expanded="false" aria-controls="transCollapse">
+                                Transacciones
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="transCollapse" aria-labelledby="headingOne"
+                                data-bs-parent="#sidenavAccordionPag">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Lista de transacciones</a>
+                                    <a class="nav-link" href="404.html">Crear transacción</a>
+                                </nav>
+                            </div>
+
+                        </nav>
+                    </div>
+
+
+
+
+
+                    <div class="sb-sidenav-menu-heading">Inventario</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClients"
+                        aria-expanded="false" aria-controls="collapseClients">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-sort"></i></div>
+                        Clasificaciones
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseClients" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Lista de clasificaciones</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Agregar clasificación</a>
+                        </nav>
+                    </div>
+
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClass"
+                        aria-expanded="false" aria-controls="collapseClass">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-sort"></i></div>
+                        Clasificaciones
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseClass" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Lista de clasificaciones</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Agregar clasificación</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProds"
+                        aria-expanded="false" aria-controls="collapseProds">
+                        <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></div>
+                        Productos
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseProds" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Lista de productos</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Agregar producto</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseInc"
+                        aria-expanded="false" aria-controls="collapseInc">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-store"></i></div>
+                        Compras
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseInc" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Lista de compras</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Agregar compra</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOut"
+                        aria-expanded="false" aria-controls="collapseOut">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
+                        Ventas
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseOut" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="layout-static.html">Lista de ventas</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Agregar venta</a>
+                        </nav>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Dashboard</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+
+
+                <div class="row">
+                    <router-outlet></router-outlet>
+                </div>
+
+
+
+
+      
+    </div>
+</div>
