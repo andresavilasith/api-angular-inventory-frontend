@@ -5,7 +5,7 @@ import { UsersComponent } from './pages/user/users/users.component';
 import { UserComponent } from './pages/user/user/user.component';
 import { NewUserComponent } from './pages/user/new-user/new-user.component';
 import { EditUserComponent } from './pages/user/edit-user/edit-user.component';
-import { MenuComponent } from './pages/menu/menu.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MenuComponent
+        component: HomeComponent
       },
       {
         path: 'users',

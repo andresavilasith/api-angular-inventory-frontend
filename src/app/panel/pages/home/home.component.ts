@@ -1,31 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../auth/services/auth.service';
-import { User } from '../../../auth/interfaces/User.interface';
+import { Component, OnInit } from '@angular/core';
 import { UserIdentified } from '../../../auth/interfaces/UserIdentified.interface';
 import { UserPermissions } from '../../../auth/interfaces/UserPermissions.interface';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   styles: [
   ]
 })
-export class MenuComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
-  @Input() loggedIn: any;
-  @Input() token: string;
-  @Input() user: UserIdentified | undefined;
-  @Input() permissionsSlug: any;
+  public token: string;
+  public user: UserIdentified | undefined;
+  public userPermissions: any;
+
   constructor(
     private _router: Router,
     private _authService: AuthService
   ) {
+
     this.token = this._authService.getToken();
   }
 
   ngOnInit(): void {
-
     this._authService.userData(this.token).subscribe({
       next: (user) => {
         this.user = user;
@@ -36,10 +35,11 @@ export class MenuComponent implements OnInit {
 
 
         this._authService.userPermissions(this.token).subscribe({
-          next: (permissions) => {
+          next: (resp) => {
 
-            this.permissionsSlug = Object.values(permissions);
-            
+            this.userPermissions = resp.permissions;
+            this._authService.permissionUser(this.userPermissions);
+      
           },
           error: (e) => {
             console.log(e);
@@ -56,12 +56,6 @@ export class MenuComponent implements OnInit {
       }
       ,
     });
-
-  }
-
-  logout(): void {
-    this._authService.logout();
-    this._router.navigate(['/auth/login'])
   }
 
 }

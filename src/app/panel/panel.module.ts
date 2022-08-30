@@ -12,7 +12,6 @@ import { NewRoleComponent } from './pages/role/new-role/new-role.component';
 import { EditRoleComponent } from './pages/role/edit-role/edit-role.component';
 import { MenuComponent } from './pages/menu/menu.component';
 
-
 @NgModule({
   declarations: [
     UsersComponent,
@@ -27,7 +26,7 @@ import { MenuComponent } from './pages/menu/menu.component';
   ],
   imports: [
     CommonModule,
-    PanelRoutingModule
+    PanelRoutingModule, 
   ],
   exports:[
     MenuComponent

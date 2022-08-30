@@ -1,6 +1,7 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark"
+    [ngStyle]="loggedIn ? {'display': 'flex'} : {'display' : 'none'}">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Inventory</a>
+    <a class="navbar-brand ps-3" routerLink="/">Inventory</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
@@ -12,17 +13,17 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Configuración</a></li>
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!">Salir</a></li>
+                <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
             </ul>
         </li>
     </ul>
 </nav>
 <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
+    <div id="layoutSidenav_nav" [ngStyle]="loggedIn ? {'display': 'block'} : {'display' : 'none'}">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
@@ -37,64 +38,82 @@
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+                                [ngStyle]="permissionsSlug?.includes('user.index') ? {'display': 'flex'} : {'display' : 'none'}"
                                 aria-controls="pagesCollapseAuth">
-                                Usuarios
+                                Users
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Lista de usuarios</a>
-                                    <a class="nav-link" href="register.html">Crear Usuarios</a>
+                                    <a class="nav-link" routerLink="/panel/users">List of users</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#roleCollapse" aria-expanded="false" aria-controls="roleCollapse">
+                                data-bs-target="#roleCollapse" aria-expanded="false" aria-controls="roleCollapse"
+                                [ngStyle]="permissionsSlug?.includes('role.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
                                 Roles
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="roleCollapse" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Lista de roles</a>
-                                    <a class="nav-link" href="404.html">Crear rol</a>
+                                    <a class="nav-link" href="401.html"
+                                    [ngStyle]="permissionsSlug?.includes('role.index') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >List of roles</a>
+                                    <a class="nav-link" href="404.html"
+                                    [ngStyle]="permissionsSlug?.includes('role.create') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >Create rol</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#categoryCollapse" aria-expanded="false"
-                                aria-controls="categoryCollapse">
-                                Categorías
+                                aria-controls="categoryCollapse"
+                                [ngStyle]="permissionsSlug?.includes('category.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
+                                Categories
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="categoryCollapse" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Lista de categorías</a>
-                                    <a class="nav-link" href="404.html">Crear categoría</a>
+                                    <a class="nav-link" href="401.html"
+                                    [ngStyle]="permissionsSlug?.includes('category.index') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >List of categories</a>
+                                    <a class="nav-link" href="404.html"
+                                    [ngStyle]="permissionsSlug?.includes('category.create') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >Create category</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#permCollapse" aria-expanded="false" aria-controls="permCollapse">
+                                data-bs-target="#permCollapse" aria-expanded="false" aria-controls="permCollapse"
+                                [ngStyle]="permissionsSlug?.includes('permission.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
                                 Permisos
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="permCollapse" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Lista de permisos</a>
-                                    <a class="nav-link" href="404.html">Crear permiso</a>
+                                    <a class="nav-link" href="401.html"
+                                    [ngStyle]="permissionsSlug?.includes('permission.index') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >List of permissions</a>
+                                    <a class="nav-link" href="404.html"
+                                    [ngStyle]="permissionsSlug?.includes('permission.create') ? {'display': 'block'} : {'display' : 'none'}"
+                                    >Create permission</a>
                                 </nav>
                             </div>
                         </nav>
                     </div>
 
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#collapseGeneral" aria-expanded="false" aria-controls="collapseGeneral">
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseGeneral"
+                        aria-expanded="false" aria-controls="collapseGeneral">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Ajustes Generales
+                        Settings
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseGeneral" aria-labelledby="headingTwo"
@@ -102,41 +121,47 @@
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPag">
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#pagesCollapseDocs" aria-expanded="false"
-                                aria-controls="pagesCollapseDocs">
-                                Documentos
+                                aria-controls="pagesCollapseDocs"
+                                [ngStyle]="permissionsSlug?.includes('document.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
+                                Documents
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="pagesCollapseDocs" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPag">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="login.html">Lista de documentos</a>
-                                    <a class="nav-link" href="register.html">Crear documento</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('document.index') ? {'display': 'block'} : {'display' : 'none'}">List of documents</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('document.create') ? {'display': 'block'} : {'display' : 'none'}">Create document</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#taxCollapse" aria-expanded="false" aria-controls="taxCollapse">
-                                Impuestos
+                                data-bs-target="#taxCollapse" aria-expanded="false" aria-controls="taxCollapse"
+                                [ngStyle]="permissionsSlug?.includes('tax.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
+                                Taxes
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="taxCollapse" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPag">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Lista de impuestos</a>
-                                    <a class="nav-link" href="404.html">Crear impuesto</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('tax.index') ? {'display': 'block'} : {'display' : 'none'}">List of taxes</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('tax.create') ? {'display': 'block'} : {'display' : 'none'}">Create tax</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#transCollapse" aria-expanded="false" aria-controls="transCollapse">
-                                Transacciones
+                                data-bs-target="#transCollapse" aria-expanded="false" aria-controls="transCollapse"
+                                [ngStyle]="permissionsSlug?.includes('transaction.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                                >
+                                Transactions
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="transCollapse" aria-labelledby="headingOne"
                                 data-bs-parent="#sidenavAccordionPag">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Lista de transacciones</a>
-                                    <a class="nav-link" href="404.html">Crear transacción</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('transaction.index') ? {'display': 'block'} : {'display' : 'none'}">List of transactions</a>
+                                    <a class="nav-link" [ngStyle]="permissionsSlug?.includes('transaction.create') ? {'display': 'block'} : {'display' : 'none'}">Create transaction</a>
                                 </nav>
                             </div>
 
@@ -147,102 +172,114 @@
 
 
 
-                    <div class="sb-sidenav-menu-heading">Inventario</div>
+                    <div class="sb-sidenav-menu-heading">Inventory</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClients"
-                        aria-expanded="false" aria-controls="collapseClients">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-sort"></i></div>
-                        Clasificaciones
+                        aria-expanded="false" aria-controls="collapseClients"
+                        [ngStyle]="permissionsSlug?.includes('actor.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                        Clients
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseClients" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Lista de clasificaciones</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Agregar clasificación</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('actor.index') ? {'display': 'block'} : {'display' : 'none'}">List of clients</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('actor.create') ? {'display': 'block'} : {'display' : 'none'}">Create client</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProviders"
+                        aria-expanded="false" aria-controls="collapseProviders"
+                        [ngStyle]="permissionsSlug?.includes('actor.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                        Providers
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseProviders" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('actor.index') ? {'display': 'block'} : {'display' : 'none'}">List of providers</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('actor.create') ? {'display': 'block'} : {'display' : 'none'}">Create provider</a>
                         </nav>
                     </div>
 
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClass"
-                        aria-expanded="false" aria-controls="collapseClass">
+                        aria-expanded="false" aria-controls="collapseClass"
+                        [ngStyle]="permissionsSlug?.includes('classification.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-sort"></i></div>
-                        Clasificaciones
+                        Classifications
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseClass" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Lista de clasificaciones</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Agregar clasificación</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('classification.index') ? {'display': 'block'} : {'display' : 'none'}">List of classifications</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('classification.create') ? {'display': 'block'} : {'display' : 'none'}">Create classification</a>
                         </nav>
                     </div>
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProds"
-                        aria-expanded="false" aria-controls="collapseProds">
+                        aria-expanded="false" aria-controls="collapseProds"
+                        [ngStyle]="permissionsSlug?.includes('product.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
                         <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></div>
-                        Productos
+                        Products
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseProds" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Lista de productos</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Agregar producto</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('product.index') ? {'display': 'block'} : {'display' : 'none'}">List of products</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('product.create') ? {'display': 'block'} : {'display' : 'none'}">Create product</a>
                         </nav>
                     </div>
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseInc"
-                        aria-expanded="false" aria-controls="collapseInc">
+                        aria-expanded="false" aria-controls="collapseInc"
+                        [ngStyle]="permissionsSlug?.includes('incoming.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-store"></i></div>
-                        Compras
+                        Incomings
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseInc" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Lista de compras</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Agregar compra</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('incoming.index') ? {'display': 'block'} : {'display' : 'none'}">List of incomings</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('incoming.create') ? {'display': 'block'} : {'display' : 'none'}">Create incoming</a>
                         </nav>
                     </div>
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOut"
-                        aria-expanded="false" aria-controls="collapseOut">
+                        aria-expanded="false" aria-controls="collapseOut"
+                        [ngStyle]="permissionsSlug?.includes('outgoing.index') ? {'display': 'flex'} : {'display' : 'none'}"
+                        >
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-cash-register"></i></div>
-                        Ventas
+                        Outgoings
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="collapseOut" aria-labelledby="headingOne"
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="layout-static.html">Lista de ventas</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Agregar venta</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('outgoing.index') ? {'display': 'block'} : {'display' : 'none'}">List of outgoings</a>
+                            <a class="nav-link" [ngStyle]="permissionsSlug?.includes('outgoing.create') ? {'display': 'block'} : {'display' : 'none'}">Create outgoing</a>
                         </nav>
                     </div>
-
-
-
-
 
 
                 </div>
             </div>
         </nav>
     </div>
-    <div id="layoutSidenav_content">
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Dashboard</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
 
-
-                <div class="row">
-                    <router-outlet></router-outlet>
-                </div>
-
-
-
-
-      
+    <div id="layoutSidenav_content" [ngClass]="{'bg-dark': !loggedIn }">
+        <div class="container-fluid px-4">
+            <div class="row">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
-</div>

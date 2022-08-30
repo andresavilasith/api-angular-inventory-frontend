@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
   ]
 })
 export class LoginComponent implements OnInit {
+
 
   user_passport = {
     client_id: 0,
@@ -44,8 +45,8 @@ export class LoginComponent implements OnInit {
 
     this._authService.loginToken(this.user_passport).subscribe({
       next: (resp) => {
-        localStorage.setItem('token',resp.access_token);
-        this._router.navigate(['/panel/'])
+        localStorage.setItem('token', resp.access_token);
+        this._router.navigate(['/panel'])
       },
       error: (e) => {
         this._router.navigate(['/auth/login'])

@@ -8,6 +8,7 @@ import { UserPermissions } from '../interfaces/UserPermissions.interface';
 import { LoginToken } from '../interfaces/LoginToken.interface';
 import { LoginData } from '../interfaces/LoginData.interface';
 import { UserPassport } from '../interfaces/UserPassport.interface';
+import { UserIdentified } from '../interfaces/UserIdentified.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,13 @@ export class AuthService {
   public baseUrl: string;
   public authUrl: string;
   public oauthTokenUrl: string;
+  public panelUrl: string;
 
   constructor(private _http: HttpClient) {
     this.baseUrl = environment.baseUrl;
     this.authUrl = environment.authUrl;
     this.oauthTokenUrl = environment.oauthTokenUrl;
+    this.panelUrl = environment.panelUrl;
   }
 
   register(user: UserRegister['user']): Observable<User> {
@@ -51,18 +54,18 @@ export class AuthService {
     return this.permissionsUser;
   }
 
-  userData(token: any): Observable<any> {
+  userData(token: string): Observable<UserIdentified> {
     var headers = new HttpHeaders().set('Authorization', token)
 
-    return this._http.get(`${this.authUrl}/user/identified`, { headers: headers })
-}
+    return this._http.get<UserIdentified>(`${this.panelUrl}/user/identified`, { headers: headers })
+  }
 
 
-userPermissions(token: any): Observable<UserPermissions> {
+  userPermissions(token: any): Observable<UserPermissions> {
     var headers = new HttpHeaders().set('Authorization', token)
 
-    return this._http.get<UserPermissions>(`${this.authUrl}/user/permissions`, { headers: headers })
-}
+    return this._http.get<UserPermissions>(`${this.panelUrl}/user/permissions`, { headers: headers })
+  }
 
   getToken() {
     this.token = 'Bearer ' + localStorage.getItem('token');

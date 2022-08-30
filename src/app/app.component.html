@@ -1,2 +1,1 @@
-<app-menu *ngIf="loggedIn"></app-menu>
-<router-outlet *ngIf="!loggedIn"></router-outlet>
+<app-menu [loggedIn]="loggedIn" [user]="user" [token]="token" [permissionsSlug]="permissionsSlug"></app-menu>
